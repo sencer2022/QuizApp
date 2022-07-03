@@ -15,7 +15,7 @@ let sorular = [
     new Soru("4-Hangisi Javascript paket yönetim uygulamasıdır?", {a: "NodeJS", b: "Typscript", c: "Npm"}, "c"),
 ];
 
-function Quiz(sorular){
+function Quiz(sorular){   // "Quiz" constructor'ının içine "sorular" dizisini attık ki o dizinin elamanları da "Soru" constructor'ı ile oluşturulmuştur.
     this.sorular = sorular;
     this.soruIndex = 0;
 }
