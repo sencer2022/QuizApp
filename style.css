@@ -1,0 +1,66 @@
+.btn-start,
+.quiz_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Tam ortalanmasını sağlar */
+}
+
+.quiz_box.active{
+    opacity: 1; /* Butona tıklanınca soru kartı görünür*/
+    pointer-events: auto; /* Butona tıklanınca soru kartının pointer eventleri aktif hale gelir.*/
+
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.quiz_box{
+    width: 550px;
+
+    opacity: 0; /* Buton soru kartının altında kaldığı için görünmez. Opacity sıfır yaparsak soru kartı görünmez buton görünür.*/
+    pointer-events: none; /* Buton soru kartının altında kaldığı için tıklanmaz. Soru kartının pointer eventlerini kapatınca buton çalışır.*/
+
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: all 0.3s ease;
+}
+
+.quiz_box header .title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.quiz_box .question-text {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.quiz_box .option-list {
+    padding: 18px 0;
+}
+
+.quiz_box .option-list .option {
+    border: 1px solid #151D3B;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center; /* dikeyde ortalar */
+    justify-content: space-between;
+}
+
+.quiz_box .option-list .option:hover{
+    color: #112B2C;
+    background-color: #FFD33D;
+}
+
+.quiz_box .option-list .option.correct{
+    color: #155724;
+    background-color: #d4edda;
+}
+
+.quiz_box .option-list .option.incorrect{
+    color: #721c24;
+    background-color: #f8d7da;
+}
