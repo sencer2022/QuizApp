@@ -95,5 +95,4 @@ function optionSelected(option){
     }
     
     document.querySelector(".next_btn").classList.toggle("show");
-
 }
