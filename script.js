@@ -41,6 +41,11 @@ document.querySelector(".next_btn").addEventListener("click", function(){
     }
 });
 
+const option_list = document.querySelector(".option-list");
+const correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>';
+const incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>';
+
+
 function soruGoster(soru){
     let question = `<span>${soru.soruMetni}</span>`;
     let options = '';
@@ -56,5 +61,31 @@ function soruGoster(soru){
     }
 
     document.querySelector(".question-text").innerHTML = question;
-    document.querySelector(".option-list").innerHTML = options;
+    option_list.innerHTML = options;
+
+    const option = option_list.querySelectorAll(".option");
+
+    option.forEach(opt => {
+        opt.setAttribute("onclick", "optionSelected(this)");
+    })
+
+}
+
+function optionSelected(option){
+    let cevap = option.querySelector("span b").textContent;
+    let soru = quiz.soruGetir();
+
+    if(soru.cevabiKontrolEt(cevap)){
+        option.classList.add("correct");
+        option.insertAdjacentHTML("beforeend", correctIcon);
+        
+    }else{
+        option.classList.add("incorrect");
+        option.insertAdjacentHTML("beforeend", incorrectIcon);        
+    }
+
+    for (let i=0; i<option_list.children.length; i++){
+        option_list.children[i].classList.add("disabled");
+    }
+    
 }
