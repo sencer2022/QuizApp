@@ -30,15 +30,20 @@ const quiz = new Quiz(sorular);
 document.querySelector(".btn-start").addEventListener("click", function(){
     document.querySelector('.quiz_box').classList.add("active");
     soruGoster(quiz.soruGetir());
+
+    document.querySelector(".next_btn").classList.remove("show");
+
 });
 
 document.querySelector(".next_btn").addEventListener("click", function(){
     if (quiz.sorular.length != quiz.soruIndex+1){
         quiz.soruIndex += 1;
         soruGoster(quiz.soruGetir());
+        document.querySelector(".next_btn").classList.toggle("show");
     }else{
         console.log("Quiz bitti")
     }
+
 });
 
 const option_list = document.querySelector(".option-list");
@@ -72,6 +77,7 @@ function soruGoster(soru){
 }
 
 function optionSelected(option){
+    
     let cevap = option.querySelector("span b").textContent;
     let soru = quiz.soruGetir();
 
@@ -88,4 +94,6 @@ function optionSelected(option){
         option_list.children[i].classList.add("disabled");
     }
     
+    document.querySelector(".next_btn").classList.toggle("show");
+
 }

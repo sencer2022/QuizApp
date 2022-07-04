@@ -68,3 +68,18 @@
 .quiz_box .option-list .option.disabled {
     pointer-events: none;
 }
+
+.quiz_box .next_btn {
+    opacity: 0;
+    pointer-events: none;
+
+    transform: scale(0.7);
+    transition: all 0.5s ease;
+}
+
+.quiz_box .next_btn.show {
+    opacity: 1;
+    pointer-events: auto;
+
+    transform: scale(1);
+}
