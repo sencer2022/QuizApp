@@ -6,14 +6,14 @@
     transform: translate(-50%, -50%); /* Tam ortalanmasını sağlar */
 }
 
-.quiz_box.active{
+.quiz_box.active {
     opacity: 1; /* Butona tıklanınca soru kartı görünür*/
     pointer-events: auto; /* Butona tıklanınca soru kartının pointer eventleri aktif hale gelir.*/
 
     transform: translate(-50%, -50%) scale(1);
 }
 
-.quiz_box{
+.quiz_box {
     width: 550px;
 
     opacity: 0; /* Buton soru kartının altında kaldığı için görünmez. Opacity sıfır yaparsak soru kartı görünmez buton görünür.*/
@@ -50,17 +50,17 @@
     justify-content: space-between;
 }
 
-.quiz_box .option-list .option:hover{
+.quiz_box .option-list .option:hover {
     color: #112B2C;
     background-color: #FFD33D;
 }
 
-.quiz_box .option-list .option.correct{
+.quiz_box .option-list .option.correct {
     color: #155724;
     background-color: #d4edda;
 }
 
-.quiz_box .option-list .option.incorrect{
+.quiz_box .option-list .option.incorrect {
     color: #721c24;
     background-color: #f8d7da;
 }

@@ -57,5 +57,4 @@ function soruGoster(soru){
 
     document.querySelector(".question-text").innerHTML = question;
     document.querySelector(".option-list").innerHTML = options;
-
 }
