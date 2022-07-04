@@ -30,20 +30,19 @@ const quiz = new Quiz(sorular);
 document.querySelector(".btn-start").addEventListener("click", function(){
     document.querySelector('.quiz_box').classList.add("active");
     soruGoster(quiz.soruGetir());
-
+    soruNumarasiGoster(quiz.soruIndex+1, quiz.sorular.length);
     document.querySelector(".next_btn").classList.remove("show");
-
 });
 
 document.querySelector(".next_btn").addEventListener("click", function(){
     if (quiz.sorular.length != quiz.soruIndex+1){
         quiz.soruIndex += 1;
         soruGoster(quiz.soruGetir());
+        soruNumarasiGoster(quiz.soruIndex+1, quiz.sorular.length);
         document.querySelector(".next_btn").classList.toggle("show");
     }else{
         console.log("Quiz bitti")
     }
-
 });
 
 const option_list = document.querySelector(".option-list");
@@ -95,4 +94,9 @@ function optionSelected(option){
     }
     
     document.querySelector(".next_btn").classList.toggle("show");
+}
+
+function soruNumarasiGoster(soruSirasi, toplamSoru){
+    let tag =  `<span class="badge bg-warning">${soruSirasi} / ${toplamSoru}</span>`
+    document.querySelector(".quiz_box .question_index").innerHTML = tag;
 }

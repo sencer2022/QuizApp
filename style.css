@@ -74,7 +74,7 @@
     pointer-events: none;
 
     transform: scale(0.7);
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 
 .quiz_box .next_btn.show {
@@ -82,4 +82,10 @@
     pointer-events: auto;
 
     transform: scale(1);
+}
+
+.quiz_box footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
