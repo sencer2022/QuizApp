@@ -5,6 +5,7 @@ const ui = new UI();
 ui.btn_start.addEventListener("click", function(){
     ui.quiz_box.classList.add("active");
     startTimer(10);
+    startTimeLine();
     ui.soruGoster(quiz.soruGetir());
     ui.soruNumarasiGoster(quiz.soruIndex+1, quiz.sorular.length);
     ui.btn_next.classList.remove("show");
@@ -14,12 +15,15 @@ ui.btn_next.addEventListener("click", function(){
     if (quiz.sorular.length != quiz.soruIndex+1){
         quiz.soruIndex += 1;
         clearInterval(counter);
+        clearInterval(counterLine);
         startTimer(10);
+        startTimeLine();
         ui.soruGoster(quiz.soruGetir());
         ui.soruNumarasiGoster(quiz.soruIndex+1, quiz.sorular.length);
         ui.btn_next.classList.toggle("show");
     }else{
         clearInterval(counter);
+        clearInterval(counterLine);
         ui.quiz_box.classList.remove("active");
         ui.score_box.classList.add("active");
         ui.showScore(quiz.sorular.length, quiz.dogruCevapSayisi);
@@ -40,6 +44,7 @@ ui.btn_replay.addEventListener("click", function(){
 
 function optionSelected(option){
     clearInterval(counter);
+    clearInterval(counterLine);
     let cevap = option.querySelector("span b").textContent;
     let soru = quiz.soruGetir();
 
@@ -61,8 +66,8 @@ function optionSelected(option){
 }
 
 let counter;
-function startTimer(time){
-    counter = setInterval(timer, 100) // timer ismindeki fonksiyonu 1000 ms'ne de bir çalıştırır.
+function startTimer(time) {
+    counter = setInterval(timer, 1000) // timer ismindeki fonksiyonu 1000 ms'ne de bir çalıştırır.
 
     function timer(){
         ui.time_second.textContent = time;
@@ -89,6 +94,22 @@ function startTimer(time){
 
             ui.btn_next.classList.add("show");
 
+        }
+    }
+}
+
+let counterLine;
+function startTimeLine() {
+    let line_width = 0;
+
+    counterLine = setInterval(timer, 20);
+
+    function timer() {
+        line_width += 1;
+        ui.time_line.style.width = line_width + "px";
+
+        if(line_width > 548){
+            clearInterval(counterLine);
         }
     }
 }
