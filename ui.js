@@ -7,7 +7,9 @@ function UI() {
     this.option_list = document.querySelector(".option-list"),
     this.score_box = document.querySelector(".score_box"),
     this.correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>',
-    this.incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>'
+    this.incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>',
+    this.time_text = document.querySelector(".time_text"),
+    this.time_second = document.querySelector(".time_second")
 }
 
 UI.prototype.soruGoster = function(soru){

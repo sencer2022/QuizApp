@@ -4,6 +4,7 @@ const ui = new UI();
 
 ui.btn_start.addEventListener("click", function(){
     ui.quiz_box.classList.add("active");
+    startTimer(10);
     ui.soruGoster(quiz.soruGetir());
     ui.soruNumarasiGoster(quiz.soruIndex+1, quiz.sorular.length);
     ui.btn_next.classList.remove("show");
@@ -12,10 +13,13 @@ ui.btn_start.addEventListener("click", function(){
 ui.btn_next.addEventListener("click", function(){
     if (quiz.sorular.length != quiz.soruIndex+1){
         quiz.soruIndex += 1;
+        clearInterval(counter);
+        startTimer(10);
         ui.soruGoster(quiz.soruGetir());
         ui.soruNumarasiGoster(quiz.soruIndex+1, quiz.sorular.length);
         ui.btn_next.classList.toggle("show");
     }else{
+        clearInterval(counter);
         ui.quiz_box.classList.remove("active");
         ui.score_box.classList.add("active");
         ui.showScore(quiz.sorular.length, quiz.dogruCevapSayisi);
@@ -35,7 +39,7 @@ ui.btn_replay.addEventListener("click", function(){
 
 
 function optionSelected(option){
-    
+    clearInterval(counter);
     let cevap = option.querySelector("span b").textContent;
     let soru = quiz.soruGetir();
 
@@ -53,5 +57,38 @@ function optionSelected(option){
     }
     
     ui.btn_next.classList.toggle("show");
+    
 }
 
+let counter;
+function startTimer(time){
+    counter = setInterval(timer, 100) // timer ismindeki fonksiyonu 1000 ms'ne de bir çalıştırır.
+
+    function timer(){
+        ui.time_second.textContent = time;
+        time--;
+        
+        if (time < 0){
+            clearInterval(counter); // "counter" değişkeninin tanımlandığı adreste interval set edildiği için bu satırla interval temizlenir.
+            ui.time_text.textContent = "Süre bitti!";
+
+            let cevap = quiz.soruGetir().dogruCevap;
+
+            for(let option of ui.option_list.children){
+                
+                if(option.querySelector("span b").textContent == cevap){
+                    
+                    option.classList.add("correct");
+                    option.insertAdjacentHTML("beforeend", ui.correctIcon);
+
+                }
+
+                option.classList.add("disabled");
+
+            }
+
+            ui.btn_next.classList.add("show");
+
+        }
+    }
+}
