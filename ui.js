@@ -3,6 +3,7 @@ function UI() {
     this.btn_next = document.querySelector(".next_btn"),
     this.quiz_box = document.querySelector('.quiz_box'),
     this.option_list = document.querySelector(".option-list"),
+    this.score_box = document.querySelector(".score_box"),
     this.correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>',
     this.incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>'
 }

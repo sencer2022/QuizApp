@@ -16,7 +16,8 @@ ui.btn_next.addEventListener("click", function(){
         ui.soruNumarasiGoster(quiz.soruIndex+1, quiz.sorular.length);
         ui.btn_next.classList.toggle("show");
     }else{
-        console.log("Quiz bitti")
+        ui.quiz_box.classList.remove("active");
+        ui.score_box.classList.add("active");
     }
 });
 
@@ -26,9 +27,9 @@ function optionSelected(option){
     let soru = quiz.soruGetir();
 
     if(soru.cevabiKontrolEt(cevap)){
+        quiz.dogruCevapSayisi += 1;
         option.classList.add("correct");
         option.insertAdjacentHTML("beforeend", ui.correctIcon);
-        
     }else{
         option.classList.add("incorrect");
         option.insertAdjacentHTML("beforeend", ui.incorrectIcon);        
