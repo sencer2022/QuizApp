@@ -28,6 +28,7 @@ ui.btn_next.addEventListener("click", function(){
         ui.score_box.classList.add("active");
         ui.showScore(quiz.sorular.length, quiz.dogruCevapSayisi);
     }
+
 });
 
 ui.btn_quit.addEventListener("click", function() {
@@ -62,6 +63,16 @@ function optionSelected(option){
     }
     
     ui.btn_next.classList.toggle("show");
+
+    if (quiz.soruIndex+1 == quiz.sorular.length){
+        ui.btn_next.textContent = "Skoru gör";
+        ui.btn_next.classList.remove("btn-primary");
+        ui.btn_next.classList.add("btn-secondary");
+    }else{
+        ui.btn_next.textContent = "Sonraki Soru";
+        ui.btn_next.classList.remove("btn-secondary");
+        ui.btn_next.classList.add("btn-primary");
+    }
     
 }
 
