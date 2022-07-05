@@ -18,8 +18,21 @@ ui.btn_next.addEventListener("click", function(){
     }else{
         ui.quiz_box.classList.remove("active");
         ui.score_box.classList.add("active");
+        ui.showScore(quiz.sorular.length, quiz.dogruCevapSayisi);
     }
 });
+
+ui.btn_quit.addEventListener("click", function() {
+    window.location.reload();
+});
+
+ui.btn_replay.addEventListener("click", function(){
+    quiz.soruIndex = 0;
+    quiz.dogruCevapSayisi = 0;
+    ui.btn_start.click();
+    ui.score_box.classList.remove("active");
+});
+
 
 function optionSelected(option){
     
