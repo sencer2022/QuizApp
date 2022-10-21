@@ -1,6 +1,6 @@
 # Quiz Application
 
-In this project, creating objects(constructors) and working with them in Javascript has been studied on.
+In this project, creating objects(constructors) and working with them in Javascript have been studied on.
 
 CSS has been used for design.
 
